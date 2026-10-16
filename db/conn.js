@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
+
 const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017';
 const databaseName = process.env.MONGODB_DATABASE || 'Library_Management';
 
 function explain(err) {
   const msg = String(err && err.message ? err.message : err);
+
   if (/bad auth|authentication failed|auth failed/i.test(msg)) {
     return (
       'MongoDB rejected the username or password in MONGODB_URI. ' +
@@ -34,7 +36,6 @@ async function connectToDatabase() {
   try {
     await mongoose.connect(uri, { dbName: databaseName, serverSelectionTimeoutMS: 10000 });
   } catch (err) {
-    //console.log(err)
     throw new Error(explain(err));
   }
   return mongoose.connection;

@@ -8,8 +8,7 @@ const mongoose = require("mongoose");
 const upload = require("./middleware/bookImageUpload");
 require('dotenv').config(); 
 const app = express();
-const dns = require('node:dns');
-dns.setServers(['8.8.8.8', '1.1.1.1']);
+
 const api = express.Router();
 
 const { connectToDatabase } = require('./db/conn');

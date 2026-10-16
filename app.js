@@ -9,8 +9,10 @@ const upload = require("./middleware/bookImageUpload");
 require('dotenv').config(); 
 const app = express();
 
-require("dotenv").config();
-require('./db/conn');
+const api = express.Router();
+
+const { connectToDatabase } = require('./db/conn');
+const AuthenticateAdmin = require("./middleware/authenticateAdmin");
 const User = require('./model/userSchema');
 const Book = require("./model/bookSchema");
 const { findByEmail } = require('./utils/accounts');

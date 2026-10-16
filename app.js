@@ -7,8 +7,7 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
-
-dotenv.config({path : './config.env'});
+require("dotenv").config();
 require('./db/conn');
 const User = require('./model/userSchema');
 const Book = require("./model/bookSchema");

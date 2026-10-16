@@ -1,15 +1,10 @@
 const jwt = require('jsonwebtoken');
 const User = require('../model/userSchema');
-require('dotenv').config();
 
 const secretKey = process.env.SECRET_KEY;
-console.log(secretKey)
 const Authenticate = async (req, res, next) => {
   try {
-    console.log("hey")
     const token = req.cookies.jwtoken;
-    console.log("bey")
-    console.log(token)
     if (!token) {
       throw new Error('No token provided');
     }

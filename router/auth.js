@@ -59,14 +59,14 @@ router.post('/loginpage', async (req, res) =>
     try
     {
         const {email, password} = req.body;
+        
         if(!email || !password)
         {
             // window.alert("Please fill the data");
             return res.status(400).json({error : "Please fill the data"});
         }
-
         const userLogin = await User.findOne({email : email});
-
+        //console.log(userLogin)
         if(userLogin)
         {
             const isMatch = await bcrypt.compare(password, userLogin.password);
